@@ -109,6 +109,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Food.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Snake.cpp" />
   </ItemGroup>

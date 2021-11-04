@@ -13,12 +13,13 @@
 class SnakeFood
 {
 public:
+	//declare public functions for food object
 	SnakeFood();
 	~SnakeFood();
 
 	void MakeFood();
 
-	COORD get_pos;
+	COORD get_pos();
 
 private:
 

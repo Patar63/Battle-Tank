@@ -21,22 +21,24 @@ public:
 	SnakePlayer(COORD pos, int velocity);  // declare constructors
 	~SnakePlayer();							//declare destructor
 
+	//public functions for calling in the game
 	void Increase();
 	void Move();
-	void Direction();
+	void Direction(char drct);
 
 	bool Collide();
 	bool Eat(COORD food);
 
-	vector<COORD> get_body;
+	vector<COORD> get_body();
 
 	COORD get_pos();
 
 private:
+	//creates private variables to be tracked by snake only.
 	COORD pos;
 	int velocity;
-	int direct;
-	int len;
+	int length;
+	char direct;
 	vector<COORD> body;
 
 };
