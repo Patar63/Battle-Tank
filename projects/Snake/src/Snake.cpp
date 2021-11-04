@@ -51,10 +51,14 @@ void SnakePlayer::Move()
 {
 	switch (direct)
 	{
-	case 'u': pos.Y -= velocity; break;
-	case 'd': pos.Y += velocity; break;
-	case 'l': pos.X -= velocity; break;
-	case 'r': pos.X += velocity; break;
+	case 'u': pos.Y -= velocity; 
+		break;
+	case 'd': pos.Y += velocity; 
+		break;
+	case 'l': pos.X -= velocity;
+		break;
+	case 'r': pos.X += velocity; 
+		break;
 	}
 
 	body.push_back(pos);

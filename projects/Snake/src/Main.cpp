@@ -29,9 +29,10 @@ void GameBrd()
 	COORD Food_pos = Food.get_pos();
 	vector<COORD> Player_body = Player.get_body();
 
-	//create score board display
+	//create score board display text
 	cout << "Score = " << Score << "\n";
 
+	//large series of 'if' and 'for' loops used to accurately show text on screen.
 	for (int i = 0; i < height; i++)
 	{
 		cout << "\t\t#";
@@ -62,7 +63,66 @@ void GameBrd()
 						break;
 					}
 				}
+
+				if (piece == false)
+				{
+					cout << ' ';
+				}
 			}
 		}
+
+		cout << "#\n";
+	}
+}
+
+
+int main()
+{
+	//create needed variables and define
+	Score = 0;
+	srand(time(NULL));
+	char GameOver = false;
+
+	Food.MakeFood();
+
+	while (GameOver == false)
+	{
+		//call the game board
+		GameBrd();
+
+		//assign controls for up, down, left, and right using kbhit and getch
+		if (kbhit)
+		{
+			switch (getch())
+			{
+			case 'w': Player.Direction('u'); 
+				break;
+			case 'a': Player.Direction('l');
+				break;
+			case 's': Player.Direction('d');
+				break;
+			case 'd': Player.Direction('r');
+				break;
+			}
+		}
+
+		//check if a collision occurs and trigger game over
+		if (Player.Collide())
+		{
+			GameOver = true;
+		}
+		//Checks if the player ate a food
+		if (Player.Eat(Food.get_pos()))
+		{
+			//make a new food
+			Food.MakeFood();
+			//make player bigger
+			Player.Increase();
+			//increase score
+			Score = Score + 1;
+		}
+
+		Player.Move();
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
 	}
 }
